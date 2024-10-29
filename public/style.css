@@ -18,11 +18,11 @@
 .name-wheel {
   width: 100%;
   height: 100%;
-  border: 3px solid #0d6efd;
+  border: 1px solid #ffffff;
   border-radius: 50%;
   position: relative;
   transition: transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-  background-color: #fff;
+  background-color: transparent;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -65,4 +65,9 @@
 
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.5);
+}
+.spinnerCard {
+  background-image: url("./images/tea-roulette-background.jpg");
+  background-size: cover; /* Makes the image cover the whole card */
+  background-position: center; /* Centers the image within the card */
 }
