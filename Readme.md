@@ -10,7 +10,7 @@ cd tea-roulette
 npm init -y
 npm install express
 mkdir public
-touch public/index.html server.js
+touch public/id.html server.js
 Ticket: Create a basic HTML template and set up an Express server.
 
 Code a simple server.js to start the server.
@@ -26,7 +26,7 @@ npm install bootstrap
 Phase 2: Static Page Design and Basic UI
 Goal: Set up a static HTML page with the initial UI for tea preference input.
 
-Ticket: Design core UI components on index.html (Tea Preferences List, Spinner Wheel, Tea-Maker Display, Add New Person Modal).
+Ticket: Design core UI components on id.html (Tea Preferences List, Spinner Wheel, Tea-Maker Display, Add New Person Modal).
 
 Ticket: Create a CSS file (style.css) for basic styling, including spinner animations.
 
@@ -43,7 +43,7 @@ Ticket: Set up GET /api/preferences API to retrieve the list of current preferen
 
 Ticket: Create POST /api/preferences API to add a new person’s preferences as JSON data.
 
-Ticket: Add DELETE /api/preferences/all and DELETE /api/preferences/:index endpoints.
+Ticket: Add DELETE /api/preferences/all and DELETE /api/preferences/:id endpoints.
 
 Terminal:
 

@@ -20,7 +20,7 @@ function updatePreferencesList() {
   const list = document.getElementById("preferencesList");
   list.innerHTML = "";
 
-  teaPreferences.forEach((pref, index) => {
+  teaPreferences.forEach((pref, id) => {
     const item = document.createElement("div");
     item.className =
       "list-group-item list-group-item-action preference-item d-flex justify-content-between align-items-center";
@@ -28,7 +28,7 @@ function updatePreferencesList() {
         <span>${pref.name}: ${pref.sugar} sugar, ${
       pref.milk ? "with" : "without"
     } milk</span>
-        <button class="btn btn-danger btn-sm" onclick="removePerson(${index})">
+        <button class="btn btn-danger btn-sm" onclick="removePerson(${id})">
           <i class="bi bi-x-lg"></i>
         </button>
       `;
@@ -36,12 +36,12 @@ function updatePreferencesList() {
   });
 }
 
-// Function to remove a specific person based on index
-async function removePerson(index) {
+// Function to remove a specific person based on id
+async function removePerson(id) {
   if (isSpinning) return;
 
   try {
-    const response = await fetch(`/api/preferences/${index}`, {
+    const response = await fetch(`/api/preferences/${id}`, {
       method: "DELETE",
     });
 
@@ -100,11 +100,11 @@ function updateNameWheel() {
 
   const sliceAngle = 360 / teaPreferences.length;
 
-  teaPreferences.forEach((person, index) => {
+  teaPreferences.forEach((person, id) => {
     const slice = document.createElement("div");
     slice.className = "name-slice";
 
-    slice.style.setProperty("--slice-index", index * sliceAngle);
+    slice.style.setProperty("--slice-id", id * sliceAngle);
     slice.textContent = person.name;
     wheel.appendChild(slice);
   });
@@ -123,6 +123,7 @@ document.getElementById("addPersonForm").onsubmit = async (e) => {
   e.preventDefault();
 
   const newPerson = {
+    id: Date.now().toString(),
     name: document.getElementById("nameInput").value,
     sugar: parseInt(document.getElementById("sugarInput").value),
     milk: document.getElementById("milkInput").checked,
@@ -162,13 +163,13 @@ document.getElementById("addPersonForm").onsubmit = async (e) => {
 //   const sliceAngle = 360 / teaPreferences.length;
 
 //   // Get random winner
-//   const randomIndex = Math.floor(Math.random() * teaPreferences.length);
+//   const randomId = Math.floor(Math.random() * teaPreferences.length);
 
 //   // Calculate the fixed rotation point for pointer alignment
 //   // Multiply by -1 to rotate clockwise
 //   const spinRotations = 6; // Number of full spins
 //   const baseRotation = spinRotations * 360; // Degrees for full spins
-//   const targetSlicePosition = -1 * (randomIndex * sliceAngle) + 90; // Negative for clockwise
+//   const targetSlicePosition = -1 * (randomId * sliceAngle) + 90; // Negative for clockwise
 
 //   // Reset current rotation to avoid accumulation
 //   currentRotation = baseRotation + targetSlicePosition;
@@ -177,7 +178,7 @@ document.getElementById("addPersonForm").onsubmit = async (e) => {
 
 //   setTimeout(() => {
 //     isSpinning = false;
-//     const winner = teaPreferences[randomIndex];
+//     const winner = teaPreferences[randomId];
 //     document.getElementById("selectedPerson").textContent = winner.name;
 //     document.getElementById("preferenceDisplay").textContent = `Preferences: ${
 //       winner.sugar
@@ -194,7 +195,7 @@ document.getElementById("spinBtn").onclick = () => {
   const sliceAngle = 360 / teaPreferences.length;
 
   // Get random winner
-  const randomIndex = Math.floor(Math.random() * teaPreferences.length);
+  const randomId = Math.floor(Math.random() * teaPreferences.length);
 
   // Reset the wheel's position first
   wheel.style.transition = "none";
@@ -206,7 +207,7 @@ document.getElementById("spinBtn").onclick = () => {
   // Calculate spin parameters
   const spinRotations = 6;
   const baseRotation = spinRotations * 360;
-  const targetSlicePosition = -1 * (randomIndex * sliceAngle) + 90;
+  const targetSlicePosition = -1 * (randomId * sliceAngle) + 90;
   const finalRotation = baseRotation + targetSlicePosition;
 
   // Start the spin with the CSS transition
@@ -217,7 +218,7 @@ document.getElementById("spinBtn").onclick = () => {
 
   setTimeout(() => {
     isSpinning = false;
-    const winner = teaPreferences[randomIndex];
+    const winner = teaPreferences[randomId];
     document.getElementById("selectedPerson").textContent = winner.name;
     document.getElementById("preferenceDisplay").textContent = `Preferences: ${
       winner.sugar

@@ -35,7 +35,7 @@
   padding: 5px;
   white-space: nowrap;
 
-  transform: rotate(calc(var(--slice-index) * 1deg)) translate(-9rem);
+  transform: rotate(calc(var(--slice-id) * 1deg)) translate(-9rem);
 } */
 .name-slice {
   position: absolute;
@@ -46,7 +46,7 @@
   padding: 5px;
   white-space: nowrap;
   /* Update the translation to align with pointer */
-  transform: rotate(calc(var(--slice-index) * 1deg)) translate(-9rem);
+  transform: rotate(calc(var(--slice-id) * 1deg)) translate(-9rem);
 }
 
 .teapot {
