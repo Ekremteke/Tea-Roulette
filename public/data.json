@@ -1,0 +1,32 @@
+[
+  {
+    "name": "aaa",
+    "sugar": 0,
+    "milk": true
+  },
+  {
+    "name": "ddd",
+    "sugar": 0,
+    "milk": false
+  },
+  {
+    "name": "zzz",
+    "sugar": 0,
+    "milk": true
+  },
+  {
+    "name": "xxx",
+    "sugar": 1,
+    "milk": true
+  },
+  {
+    "name": "ccc",
+    "sugar": 3,
+    "milk": true
+  },
+  {
+    "name": "vvvv",
+    "sugar": 0,
+    "milk": false
+  }
+]
