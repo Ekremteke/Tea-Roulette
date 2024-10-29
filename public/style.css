@@ -26,24 +26,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* .name-slice {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform-origin: 0 0;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 5px;
-  white-space: nowrap;
-
-  transform: rotate(calc(var(--slice-id) * 1deg)) translate(-9rem);
-} */
 .name-slice {
   position: absolute;
   left: 50%;
   top: 50%;
   transform-origin: 0 0;
-  background-color: rgba(255, 255, 255, 0);
-  padding: 5px;
+  background-color: transparent;
+  font-weight: bold;
   white-space: nowrap;
   /* Update the translation to align with pointer */
   transform: rotate(calc(var(--slice-id) * 1deg)) translate(-8.9rem);
