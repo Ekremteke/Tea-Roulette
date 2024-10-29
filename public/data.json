@@ -58,5 +58,11 @@
     "name": "George",
     "sugar": 5,
     "milk": true
+  },
+  {
+    "id": "1730219605329",
+    "name": "Kai",
+    "sugar": 1,
+    "milk": true
   }
 ]
