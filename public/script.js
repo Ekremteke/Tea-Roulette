@@ -154,6 +154,38 @@ document.getElementById("addPersonForm").onsubmit = async (e) => {
 };
 
 // Function to handle the spin button and select a random person
+// document.getElementById("spinBtn").onclick = () => {
+//   if (isSpinning || teaPreferences.length === 0) return;
+
+//   isSpinning = true;
+//   const wheel = document.getElementById("nameWheel");
+//   const sliceAngle = 360 / teaPreferences.length;
+
+//   // Get random winner
+//   const randomIndex = Math.floor(Math.random() * teaPreferences.length);
+
+//   // Calculate the fixed rotation point for pointer alignment
+//   // Multiply by -1 to rotate clockwise
+//   const spinRotations = 6; // Number of full spins
+//   const baseRotation = spinRotations * 360; // Degrees for full spins
+//   const targetSlicePosition = -1 * (randomIndex * sliceAngle) + 90; // Negative for clockwise
+
+//   // Reset current rotation to avoid accumulation
+//   currentRotation = baseRotation + targetSlicePosition;
+
+//   wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+//   setTimeout(() => {
+//     isSpinning = false;
+//     const winner = teaPreferences[randomIndex];
+//     document.getElementById("selectedPerson").textContent = winner.name;
+//     document.getElementById("preferenceDisplay").textContent = `Preferences: ${
+//       winner.sugar
+//     } sugar${winner.sugar !== 1 ? "s" : ""}, ${
+//       winner.milk ? "with" : "without"
+//     } milk`;
+//   }, 3000);
+// };
 document.getElementById("spinBtn").onclick = () => {
   if (isSpinning || teaPreferences.length === 0) return;
 
@@ -161,18 +193,27 @@ document.getElementById("spinBtn").onclick = () => {
   const wheel = document.getElementById("nameWheel");
   const sliceAngle = 360 / teaPreferences.length;
 
+  // Get random winner
   const randomIndex = Math.floor(Math.random() * teaPreferences.length);
 
-  const extraSpins = 6;
-  const baseRotation = extraSpins * 360; // Total degrees for full spins
-  const targetSliceRotation = randomIndex * sliceAngle; // Angle for target slice
+  // Reset the wheel's position first
+  wheel.style.transition = "none";
+  wheel.style.transform = "rotate(0deg)";
 
-  // Total rotation = full spins + target slice + 360 degrees (full turn correction)
-  const targetRotation = baseRotation + targetSliceRotation + 360;
+  // Force a reflow
+  void wheel.offsetHeight;
 
-  // Add to current rotation
-  currentRotation += targetRotation;
-  wheel.style.transform = `rotate(${currentRotation}deg)`;
+  // Calculate spin parameters
+  const spinRotations = 6;
+  const baseRotation = spinRotations * 360;
+  const targetSlicePosition = -1 * (randomIndex * sliceAngle) + 90;
+  const finalRotation = baseRotation + targetSlicePosition;
+
+  // Start the spin with the CSS transition
+  requestAnimationFrame(() => {
+    wheel.style.transition = ""; // Restore the CSS transition
+    wheel.style.transform = `rotate(${finalRotation}deg)`;
+  });
 
   setTimeout(() => {
     isSpinning = false;

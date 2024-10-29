@@ -91,3 +91,29 @@ Phase 8: Deployment and Final Documentation
 Goal: Deploy the project and complete all documentation for team and user reference.
 
 Ticket: Deploy the project to a platform (e.g., Heroku or Vercel).
+
+Bootstrap CSS (for styling and layout)
+
+Link: Bootstrap 5.3 CSS
+This stylesheet provides the core Bootstrap layout, typography, and component styles.
+html
+Copy code
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+Bootstrap Bundle with Popper (for JavaScript components)
+
+Link: Bootstrap 5.3 JavaScript Bundle
+This JavaScript bundle includes all Bootstrap JavaScript plugins as well as Popper.js for positioning tooltips, dropdowns, and popovers.
+html
+Copy code
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+Bootstrap Icons (for adding icons to buttons and components)
+
+Link: Bootstrap Icons 1.11.1
+This icon library is a set of open-source icons designed to be used with Bootstrap.
+html
+Copy code
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
