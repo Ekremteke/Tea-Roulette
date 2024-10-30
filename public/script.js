@@ -222,3 +222,72 @@ function showError(message) {
 
 // Initial load of preferences on page load
 loadPreferences();
+
+// document.getElementById("spinBtn").onclick = () => {
+//   if (isSpinning || teaPreferences.length === 0) return;
+
+//   isSpinning = true;
+//   const wheel = document.getElementById("nameWheel");
+//   const sliceAngle = 360 / teaPreferences.length;
+
+//   // Get random winner
+//   const randomId = Math.floor(Math.random() * teaPreferences.length);
+
+//   // Reset the wheel's position first
+//   wheel.style.transition = "none";
+//   wheel.style.transform = "rotate(0deg)";
+
+//   // Force a reflow
+//   void wheel.offsetHeight;
+
+//   // Calculate spin parameters
+//   const spinRotations = 6;
+//   const baseRotation = spinRotations * 360;
+//   const targetSlicePosition = -1 * (randomId * sliceAngle) + 90;
+//   const finalRotation = baseRotation + targetSlicePosition;
+
+//   // Start the spin with the CSS transition
+//   requestAnimationFrame(() => {
+//     wheel.style.transition = ""; // Restore the CSS transition
+//     wheel.style.transform = `rotate(${finalRotation}deg)`;
+//   });
+
+//   setTimeout(() => {
+//     isSpinning = false;
+//     const winner = teaPreferences[randomId];
+//     document.getElementById("selectedPerson").textContent = winner.name;
+//     document.getElementById("preferenceDisplay").textContent = `Preferences: ${
+//       winner.sugar
+//     } sugar${winner.sugar !== 1 ? "s" : ""}, ${
+//       winner.milk ? "with" : "without"
+//     } milk`;
+//   }, 3000);
+// };
+
+// // Function to show error messages as Bootstrap toasts
+// function showError(message) {
+//   const toastContainer = document.createElement("div");
+//   toastContainer.className =
+//     "toast-container position-fixed bottom-0 end-0 p-3";
+//   toastContainer.innerHTML = `
+//         <div class="toast align-items-center text-white bg-danger border-0" role="alert">
+//             <div class="d-flex">
+//                 <div class="toast-body">
+//                     ${message}
+//                 </div>
+//                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+//             </div>
+//         </div>
+//     `;
+//   document.body.appendChild(toastContainer);
+
+//   const toast = new bootstrap.Toast(toastContainer.querySelector(".toast"));
+//   toast.show();
+
+//   toastContainer.addEventListener("hidden.bs.toast", () => {
+//     toastContainer.remove();
+//   });
+// }
+
+// // Initial load of preferences on page load
+// loadPreferences();
