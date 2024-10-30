@@ -1,8 +1,12 @@
 const express = require("express");
 const session = require("express-session");
+const FileStore = require("session-file-store")(session);
 
 const app = express();
 const port = 3000;
+
+// If running behind a reverse proxy (like Heroku or AWS), trust the first proxy
+app.set("trust proxy", 1);
 
 // Configure session middleware
 
@@ -10,7 +14,12 @@ app.use(
   session({
     secret: "your-secret-key",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+    },
+    store: new FileStore(), // or Redis/MongoDB for unique session management in production
   })
 );
 
@@ -21,8 +30,10 @@ app.use(express.json());
 app.use(express.static("public"));
 // GET route to retrieve preferences for the current user session
 app.get("/api/preferences", (req, res) => {
-  const teaPreferences = req.session.teaPreferences || [];
-  res.json(teaPreferences);
+  // if (!req.session.teaPreferences) {
+  req.session.teaPreferences = [];
+  // }
+  res.json(req.session.teaPreferences);
 });
 
 // POST route to add a new tea preference for the current user session
