@@ -66,7 +66,7 @@ app.delete("/api/preferences/:index", (req, res) => {
   if (isNaN(index) || index < 0 || index >= teaPreferences.length) {
     return res.status(400).json({ error: "Invalid index" });
   }
-
+  // Remove the preference at the specified index
   teaPreferences.splice(index, 1);
   req.session.teaPreferences = teaPreferences;
   res.json(teaPreferences);
